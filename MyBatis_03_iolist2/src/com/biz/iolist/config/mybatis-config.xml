@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+  
+  	<typeAliases>
+  		<typeAlias type="com.biz.iolist.persistence.IolistDTO" alias="IolistDTO"/>
+  		<typeAlias type="com.biz.iolist.persistence.ProductDTO" alias="ProductDTO"/>
+  		<typeAlias type="com.biz.iolist.persistence.DeptDTO" alias="DeptDTO"/>
+  		<typeAlias type="com.biz.iolist.persistence.IolistVO" alias="IolistVO"/>
+  	</typeAliases>
+  	
+  	<environments default="iolist">
+  		<environment id="iolist">
+  			<transactionManager type="JDBC"/>
+  			<dataSource type="POOLED">
+  				<property name="driver" value="oracle.jdbc.OracleDriver"/>
+  				<property name="url" value="jdbc:oracle:thin:@localHost:1521:xe"/>
+  				<property name="username" value="iolist2"/>
+  				<property name="password" value="iolist2"/>
+  			</dataSource>
+  		</environment>
+  	</environments>
+  	
+  	<mappers>
+  		<mapper resource="com/biz/iolist/config/mapper/iolist-mapper.xml"/>
+  		<mapper resource="com/biz/iolist/config/mapper/pro-mapper.xml"/>
+  		<mapper resource="com/biz/iolist/config/mapper/dept-mapper.xml"/>
+  		<mapper resource="com/biz/iolist/config/mapper/iolistview-mapper.xml"/>
+  	</mappers>
+  </configuration>
