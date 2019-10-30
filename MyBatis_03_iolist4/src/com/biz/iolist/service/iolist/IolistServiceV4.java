@@ -202,8 +202,6 @@ public class IolistServiceV4 extends IolistServiceV3{
 	
 	protected void delete() {
 		
-		
-		
 		System.out.println("삭제할 SEQ >> ");
 		String strDelete = scan.nextLine();
 		
