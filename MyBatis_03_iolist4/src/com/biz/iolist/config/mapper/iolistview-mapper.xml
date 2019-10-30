@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.biz.iolist.config.IolistViewDao">
+  	<select id="selectAll" resultType="IolistVO">
+  		SELECT 			IO_DATE,
+						IO_INOUT,
+						IO_DCODE,
+						D_NAME,
+						D_CEO,
+						D_TEL,
+						D_ADDR,
+						IO_PCODE,
+						P_NAME,
+						P_IPRICE,
+						P_OPRICE,
+						P_VAT,
+						IO_QTY,
+						IO_PRICE,
+						IO_TOTAL,
+						IO_SEQ 
+		FROM view_iolist
+  	</select>
+  	<select id="findById" resultType="IolistVO">
+  		SELECT * FROM view_iolist
+  		WHER io_seq = #{io_seq}
+  	
+  	</select>
+  	<select id="findByDCode" resultType="IolistVO">
+  	  	 		SELECT 	IO_DATE,
+						IO_INOUT,
+						IO_DCODE,
+						D_NAME,
+						D_CEO,
+						D_TEL,
+						D_ADDR,
+						IO_PCODE,
+						P_NAME,
+						P_IPRICE,
+						P_OPRICE,
+						P_VAT,
+						IO_QTY,
+						IO_PRICE,
+						IO_TOTAL,
+						IO_SEQ 
+		FROM view_iolist
+		WHERE IO_Dcode = #{io_Dcode}
+  	</select>
+  	<select id="findByPCode" resultType="IolistVO">
+  	 	 		SELECT 	IO_DATE,
+						IO_INOUT,
+						IO_DCODE,
+						D_NAME,
+						D_CEO,
+						D_TEL,
+						D_ADDR,
+						IO_PCODE,
+						P_NAME,
+						P_IPRICE,
+						P_OPRICE,
+						P_VAT,
+						IO_QTY,
+						IO_PRICE,
+						IO_TOTAL,
+						IO_SEQ 
+		FROM view_iolist
+		WHERE IO_Pcode = #{io_Pcode}
+  	</select>
+ 
+  	<select id="findByPName" resultType="IolistVO">
+  		  	  SELECT 	IO_DATE,
+						IO_INOUT,
+						IO_DCODE,
+						D_NAME,
+						D_CEO,
+						D_TEL,
+						D_ADDR,
+						IO_PCODE,
+						P_NAME,
+						P_IPRICE,
+						P_OPRICE,
+						P_VAT,
+						IO_QTY,
+						IO_PRICE,
+						IO_TOTAL,
+						IO_SEQ 
+		FROM view_iolist
+		WHERE P_NAME LIKE '%' || #{p_name} || '%'
+  	</select>
+  	<select id="findByDName" resultType="IolistVO">
+  	  	 	 	SELECT 	IO_DATE,
+						IO_INOUT,
+						IO_DCODE,
+						D_NAME,
+						D_CEO,
+						D_TEL,
+						D_ADDR,
+						IO_PCODE,
+						P_NAME,
+						P_IPRICE,
+						P_OPRICE,
+						P_VAT,
+						IO_QTY,
+						IO_PRICE,
+						IO_TOTAL,
+						IO_SEQ 
+		FROM view_iolist
+		WHERE D_NAME LIKE '%' || #{d_name} || '%'
+  	</select>
+  	
+
+  	
+  </mapper>
