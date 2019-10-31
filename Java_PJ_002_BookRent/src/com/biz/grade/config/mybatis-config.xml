@@ -8,6 +8,7 @@
   		<typeAlias type="com.biz.grade.persistence.BookDTO" alias="BookDTO"/>
   		<typeAlias type="com.biz.grade.persistence.RentBookDTO" alias="RentBookDTO"/>
   		<typeAlias type="com.biz.grade.persistence.UserDTO" alias="UserDTO"/>
+  		<typeAlias type="com.biz.grade.persistence.RentVO" alias="RentVO"/>
   	</typeAliases>
   	
   	<environments default="books">

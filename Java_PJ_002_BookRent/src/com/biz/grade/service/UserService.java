@@ -152,7 +152,7 @@ public class UserService {
 		UserDTO userDTO = userDao.findById(u_code);
 		
 		while(true) {																				//회원 이름 수정
-			System.out.print("회원 이름 입력 (-Q : 종료) >> ");
+			System.out.printf("회원 이름 입력[%s] (-Q : 종료) >> ", userDTO.getU_name());
 			String u_name = scan.nextLine();
 			if(u_name.equals("-Q")) return;
 			if(u_name.trim().isEmpty()) {
@@ -163,7 +163,7 @@ public class UserService {
 		}
 		
 		while(true) {																				//회원 전화번호 입력
-			System.out.print("전화번호 입력 (-Q : 종료) >> ");
+			System.out.printf("전화번호 입력[%s] (-Q : 종료) >> ", userDTO.getU_tel());
 			String u_tel = scan.nextLine();
 			if(u_tel.equals("-Q")) return;
 			if(u_tel.trim().isEmpty()) {
@@ -180,7 +180,7 @@ public class UserService {
 		}
 		
 		while(true) {																				//회원 주소 입력
-			System.out.print("주소 입력 (-Q : 종료) >> ");
+			System.out.printf("주소 입력 [%s] (-Q : 종료) >> ", userDTO.getU_addr());
 			String u_addr = scan.nextLine();
 			if(u_addr.equals("-Q")) return;
 			if(u_addr.trim().isEmpty()) {

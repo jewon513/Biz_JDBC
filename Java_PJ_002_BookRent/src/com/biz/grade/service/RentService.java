@@ -15,6 +15,7 @@ import com.biz.grade.dao.RentBookDao;
 import com.biz.grade.dao.UserDao;
 import com.biz.grade.persistence.BookDTO;
 import com.biz.grade.persistence.RentBookDTO;
+import com.biz.grade.persistence.RentVO;
 import com.biz.grade.persistence.UserDTO;
 
 public class RentService {
@@ -249,13 +250,19 @@ public class RentService {
 			e.printStackTrace();
 		}
 		
+		RentVO rentVO = rentDao.viewFindById(rentDTO.getRent_seq());
+		this.viewRentVO(rentVO);
 		
+		System.out.println("반납 정보가 맞습니까? (Enter : 반납)");
+		String yesNo = scan.nextLine();
 		
-		int ret = rentDao.update(rentDTO);
-		if(ret >0) {
-			System.out.println("반납 완료");	
-		}else {
-			System.out.println("반납 실패");
+		if(yesNo.trim().isEmpty()) {
+			int ret = rentDao.update(rentDTO);
+			if(ret >0) {
+				System.out.println("반납 완료");	
+			}else {
+				System.out.println("반납 실패");
+			}	
 		}
 		
 	}
@@ -263,6 +270,20 @@ public class RentService {
 	
 	
 	
+	
+	protected void viewRentVO(RentVO rentVO) {
+		System.out.println("=============================================");
+		System.out.println("SEQ : " + rentVO.getRent_seq());
+		System.out.println("회원이름 : " + rentVO.getU_name());
+		System.out.println("회원코드 : " + rentVO.getU_code());
+		System.out.println("도서명 : " + rentVO.getB_name());
+		System.out.println("도서코드 : " + rentVO.getB_code());
+		System.out.println("대여일 : " + rentVO.getRent_date());
+		System.out.println("반납일 : " + rentVO.getRent_return_date());
+		String rent = rentVO.getRent_retur_yn() == null ? "미반납" : "반납";
+		System.out.println("반납여부 : " + rent);
+		System.out.println("=============================================");
+	}
 	
 	protected void viewUserDTO(UserDTO userDTO){
 		System.out.print(userDTO.getU_code() +"\t");

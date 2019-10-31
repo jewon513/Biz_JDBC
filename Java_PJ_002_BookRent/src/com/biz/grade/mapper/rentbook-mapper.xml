@@ -8,14 +8,21 @@
   		SELECT * FROM tbl_rent_book
   	</select>
   	
+  	<select id="viewFindById" resultType="RentVO">
+  		SELECT * FROM view_rent
+  		WHERE RENT_SEQ = #{rent_seq}
+  	</select>
+  	
   	<select id="checkRent" resultType="RentBookDTO">
-  		SELECT * FROM tbl_rent_book 
+  		SELECT * 
+  		FROM tbl_rent_book 
   		WHERE RENT_BCODE = #{rent_bcode}
   		AND RENT_RETUR_YN IS NULL
   	</select>
   	
   	<select id="noReturnBookCheck" resultType="RentBookDTO">
-  		SELECT * FROM tbl_rent_book
+  		SELECT * 
+  		FROM tbl_rent_book
   		WHERE RENT_RETUR_YN IS NULL
   	</select>
   	
