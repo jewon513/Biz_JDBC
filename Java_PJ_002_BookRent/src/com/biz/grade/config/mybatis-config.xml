@@ -1,0 +1,31 @@
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+  
+  	<typeAliases>
+  		<typeAlias type="com.biz.grade.persistence.BookDTO" alias="BookDTO"/>
+  		<typeAlias type="com.biz.grade.persistence.RentBookDTO" alias="RentBookDTO"/>
+  		<typeAlias type="com.biz.grade.persistence.UserDTO" alias="UserDTO"/>
+  	</typeAliases>
+  	
+  	<environments default="books">
+  		<environment id="books">
+  			<transactionManager type="JDBC"/>
+  			<dataSource type="POOLED">
+  				<property name="driver" value="oracle.jdbc.OracleDriver"/>
+  				<property name="url" value="jdbc:oracle:thin:@localHost:1521:xe"/>
+  				<property name="username" value="iolist2"/>
+  				<property name="password" value="iolist2"/>
+  			</dataSource>
+  		</environment>
+  	</environments>
+  	
+  	<mappers>
+  		<mapper resource="com/biz/grade/mapper/book-mapper.xml"/>
+  		<mapper resource="com/biz/grade/mapper/rentbook-mapper.xml"/>
+  		<mapper resource="com/biz/grade/mapper/user-mapper.xml"/>
+  	</mappers>
+  </configuration>
+ 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.biz.grade.dao.RentBookDao">
+  	<select id="selectAll" resultType="RentBookDTO">
+  		SELECT * FROM tbl_rent_book
+  	</select>
+  	
+  	<select id="checkRent" resultType="RentBookDTO">
+  		SELECT * FROM tbl_rent_book 
+  		WHERE RENT_BCODE = #{rent_bcode}
+  		AND RENT_RETUR_YN IS NULL
+  	</select>
+  	
+  	<select id="noReturnBookCheck" resultType="RentBookDTO">
+  		SELECT * FROM tbl_rent_book
+  		WHERE RENT_RETUR_YN IS NULL
+  	</select>
+  	
+  	<select id="findById" resultType="RentBookDTO">
+  		SELECT * FROM tbl_rent_book
+  		WHERE RENT_SEQ = #{rent_seq}
+  	</select>
+  	
+  	<insert id="insert" parameterType="RentBookDTO">
+  		INSERT INTO tbl_rent_book
+  									(
+  									RENT_SEQ,
+									RENT_DATE,
+									RENT_RETURN_DATE,
+									RENT_BCODE,
+									RENT_UCODE,
+									RENT_RETUR_YN,
+									RENT_POINT
+  									)
+  		VALUES
+  									(
+  									SEQ_RENT.NEXTVAL,
+									#{rent_date},
+									#{rent_return_date},
+									#{rent_bcode},
+									#{rent_ucode},
+									#{rent_retur_yn, jdbcType=VARCHAR},
+									#{rent_point, jdbcType=VARCHAR}
+  									)
+  	</insert>
+  	
+  	<update id="update" parameterType="RentBookDTO">
+		UPDATE tbl_rent_book
+		SET  	
+			RENT_DATE = #{rent_date},
+			RENT_RETURN_DATE = #{rent_return_date},
+			RENT_BCODE = #{rent_bcode},
+			RENT_UCODE = #{rent_ucode},
+			RENT_RETUR_YN = #{rent_retur_yn, jdbcType=VARCHAR},
+			RENT_POINT = #{rent_point, jdbcType=VARCHAR}
+		WHERE RENT_SEQ = #{rent_seq}
+		
+  	</update>
+  	
+  	<delete id="delete" parameterType="int">
+  		DELETE FROM tbl_rent_book
+  		WHERE RENT_SEQ = #{rent_seq}
+  	</delete>
+  	
+  </mapper>
